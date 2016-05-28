@@ -11,7 +11,7 @@ module.exports = function(source) {
     var query = this.query instanceof Object ? this.query : loaderUtils.parseQuery(this.query);
     query['source-uri'] =  this.resourcePath;
 
-    var result = wisp_compiler.compile(source, query);
+    var result = wisp_compiler.compile((query.prefix || '' ) + source, query);
 
     if ('error' in result) {
         // TODO: We really need to pull the string in a slightly nicer way
